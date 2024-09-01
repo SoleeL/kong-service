@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   kong-database:
+    container_name: kong-database
     image: postgres:latest
     environment:
       POSTGRES_USER: kong
@@ -13,6 +14,7 @@ services:
       - kong-network
 
   kong:
+    container_name: kong
     image: kong:latest
     depends_on:
       - kong-database
@@ -34,6 +36,7 @@ services:
     user: "1000:1000"
 
   kong-migrations:
+    container_name: kong-migrations
     image: kong:latest
     depends_on:
       - kong-database
@@ -52,3 +55,4 @@ volumes:
 
 networks:
   kong-network:
+    external: true

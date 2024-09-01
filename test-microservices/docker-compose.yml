@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  service1:
+    image: nginx:alpine
+    container_name: service1
+    networks:
+      - kong-network
+
+  service2:
+    image: nginx:alpine
+    container_name: service2
+    networks:
+      - kong-network
+
+  service3:
+    image: nginx:alpine
+    container_name: service3
+    networks:
+      - kong-network
+
+networks:
+  kong-network:
+    external: true
